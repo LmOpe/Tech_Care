@@ -26,12 +26,12 @@
     <meta property="og:type" content="website" />
 
     <!-- Favicon -->
-    <link rel="icon" href="path/to/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/TestLogo.svg" type="image/svg" />
 
     <!-- Title of the page -->
     <title>Tech Care</title>
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -39,26 +39,86 @@
       rel="stylesheet"
     />
   </head>
-  <body>
-    <header>
-      <h1 class="font-manrope">Main Heading of the Page</h1>
-      <!-- Navigation, logo, etc. -->
+  <body class="bg-grey-3 font-manrope p-[18px]">
+    <header
+      class="w-full bg-white rounded-[70px] h-[72px] flex items-center px-8 justify-between text-dark-green font-bold text-base"
+    >
+      <img
+        class="cursor-pointer"
+        src="/assets/TestLogo.svg"
+        alt="Tech Care Logo"
+      />
+      <div class="flex justify-between items-center min-w-[663px] xl:gap-8">
+        <div class="flex gap-2 cursor-pointer items-center">
+          <img
+            src="/assets/home_FILL0_wght300_GRAD0_opsz24.svg"
+            alt="Overview"
+          />
+          <p>Overview</p>
+        </div>
+        <div
+          class="flex gap-2 cursor-pointer items-center bg-green rounded-[41px] py-[11px] px-4"
+        >
+          <img
+            src="/assets/group_FILL0_wght300_GRAD0_opsz24.svg"
+            alt="Patients"
+          />
+          <p class="">Patients</p>
+        </div>
+        <div class="flex gap-2 cursor-pointer items-center">
+          <img src="/assets/BirthIcon.svg" alt="Schedule" />
+          <p>Schedule</p>
+        </div>
+        <div class="flex gap-2 cursor-pointer items-center">
+          <img
+            src="/assets/chat_bubble_FILL0_wght300_GRAD0_opsz24.svg"
+            alt="Message"
+          />
+          <p>Message</p>
+        </div>
+        <div class="flex gap-2 cursor-pointer items-center">
+          <img
+            src="/assets/credit_card_FILL0_wght300_GRAD0_opsz24.svg"
+            alt="Transactions"
+          />
+          <p>Transactions</p>
+        </div>
+      </div>
+      <div class="flex justify-between items-center min-w-[241px]">
+        <div class="flex w-full gap-2">
+          <img
+            class="cursor-pointer"
+            src="/assets/senior-woman-doctor-and-portrait-smile-for-health-2023-11-27-05-18-16-utc.png"
+            alt="Doctor"
+          />
+          <div class="flex flex-col justify-between items-start py-1">
+            <p class="cursor-pointer">Dr. Jose Simmons</p>
+            <p class="text-grey-7 font-normal cursor-pointer">
+              General Practitioner
+            </p>
+          </div>
+        </div>
+        <div class="flex gap-2">
+          <img
+            class="cursor-pointer"
+            src="/assets/settings_FILL0_wght300_GRAD0_opsz24.svg"
+            alt="Settings"
+          />
+          <img
+            class="cursor-pointer"
+            src="/assets/more_vert_FILL0_wght300_GRAD0_opsz24.svg"
+            alt="Menu"
+          />
+        </div>
+      </div>
     </header>
 
     <main>
       <!-- Main content of the page -->
-      <section>
-        <h2>Subheading</h2>
-        <p>Some content goes here.</p>
-      </section>
     </main>
 
-    <footer>
-      <p>&copy; 2024 the Name. All rights reserved.</p>
-    </footer>
-
     <!-- JavaScript files -->
-    <script src="index.js"></script>
+    <script src="/index.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -76,13 +136,13 @@
               "grey-6": "#CBC8D4",
               "grey-7": "#707070",
               "dark-green": "#072635",
-              "green": "#01F0D0",
+              green: "#01F0D0",
               "light-green-1": "#E0F3FA",
               "light-green-2": "#D8FCF7",
               "dark-purple": "#7E6CAB",
               "light-purple": "#8C6FE6",
               "dark-pink": "#C26EB4",
-              "pink": "#E66FD2",
+              pink: "#E66FD2",
               "light-pink-1": "#FFE6F1",
               "ligt-pink-2": "#FFE6E9",
             },
