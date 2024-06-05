@@ -13,6 +13,13 @@ const encodedCredentials = encodeCredentials(username, password);
 addEventListener("DOMContentLoaded", () => {
   const dataListElement = document.getElementById("patients-list");
   const rightSideBar = document.getElementById("right-side-bar");
+  const respiratoryRate = document.getElementById("respiratory-rate");
+  const respiratoryStatus = document.getElementById("respiratory-status");
+  const temperature = document.getElementById("temperature");
+  const temperatureStatus = document.getElementById("temperature-status");
+  const heartRate = document.getElementById("heart-rate");
+  const heartStatus = document.getElementById("heart-status");
+
   // Fetch data from the API
   function fetchData() {
     fetch("https://fedskillstest.coalitiontechnologies.workers.dev", {
@@ -27,6 +34,7 @@ addEventListener("DOMContentLoaded", () => {
         console.log(data);
         UpdatePatientsList(data);
         UpdateRightSideBar(data[3]);
+        UpdateDiagnosisHistory(data[3].diagnosis_history);
       })
       .catch((error) => console.error("Error:", error));
   }
@@ -68,7 +76,7 @@ addEventListener("DOMContentLoaded", () => {
 
   // Function to Update the
   // selected patient bio and the lab results in the UI
-  
+
   function UpdateRightSideBar(data) {
     rightSideBar.innerHTML = "";
 
@@ -143,6 +151,46 @@ addEventListener("DOMContentLoaded", () => {
     </div>
     `;
     rightSideBar.innerHTML = rightSideBarHtml;
+  }
+
+  // Function to update the Diagnosis History
+  function UpdateDiagnosisHistory(data) {
+    const singleData = data[0];
+    // Respiratory Rate
+    respiratoryRate.innerHTML = `${singleData.respiratory_rate.value} bpm`;
+    respiratoryStatus.innerHTML = `${
+      singleData.respiratory_rate.levels !== "Normal"
+        ? `<img src="/assets/${
+            singleData.respiratory_rate.levels === "Lower than Average"
+              ? "ArrowDown"
+              : "ArrowUp"
+          }.svg" alt="Respiratory Status"></img>`
+        : ""
+    } ${singleData.respiratory_rate.levels}`;
+
+    // Temperature
+    temperature.innerHTML = `${singleData.temperature.value} °F`;
+    temperatureStatus.innerHTML = `${
+      singleData.temperature.levels !== "Normal"
+        ? `<img src="/assets/${
+            singleData.temperature.levels === "Lower than Average"
+              ? "ArrowDown"
+              : "ArrowUp"
+          }.svg" alt="Temperature Status"></img>`
+        : ""
+    } ${singleData.temperature.levels}`;
+
+    // Heart Rate
+    heartRate.innerHTML = `${singleData.heart_rate.value} bpm`;
+    heartStatus.innerHTML = `${
+      singleData.heart_rate.levels !== "Normal"
+        ? `<img src="/assets/${
+            singleData.heart_rate.levels === "Lower than Average"
+              ? "ArrowDown"
+              : "ArrowUp"
+          }.svg" alt="Heart Status"></img>`
+        : ""
+    } ${singleData.heart_rate.levels}`;
   }
 
   fetchData();
