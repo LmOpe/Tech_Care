@@ -39,9 +39,9 @@
       rel="stylesheet"
     />
   </head>
-  <body class="bg-grey-3 font-manrope p-[18px]">
+  <body class="bg-grey-3 font-manrope p-[18px] overflow-y-hidden h-screen">
     <header
-      class="w-full bg-white rounded-[70px] h-[72px] flex items-center px-8 justify-between text-dark-green font-bold text-base"
+      class="w-full min-w-[1200px] bg-white rounded-[70px] h-[72px] flex items-center px-8 mb-8 justify-between text-dark-green font-bold text-base"
     >
       <img
         class="cursor-pointer"
@@ -114,7 +114,24 @@
     </header>
 
     <main>
-      <!-- Main content of the page -->
+      <div
+        class="rounded-2xl gap-10 w-[350px] flex flex-col p-5 bg-white font-manrope font-bold text-base text-dark-green h-full"
+      >
+        <div class="w-full flex justify-between">
+          <p class="text-2xl font-bolder">Patients</p>
+          <img
+          class="h-[18px] w-[32px]"
+            src="/assets/search_FILL0_wght300_GRAD0_opsz24.svg"
+            alt="Search Patients"
+          />
+        </div>
+        <ul
+          id="patients-list"
+          class="flex flex-col gap-8 w-full overflow-y-scroll overflow-x-hidden pr-4 h-sidebar"
+        ></ul>
+      </div>
+      <div class=""></div>
+      <div class=""></div>
     </main>
 
     <!-- JavaScript files -->
@@ -145,6 +162,9 @@
               pink: "#E66FD2",
               "light-pink-1": "#FFE6F1",
               "ligt-pink-2": "#FFE6E9",
+            },
+            height: {
+              "sidebar": "calc(100vh - 270px)",
             },
           },
         },
