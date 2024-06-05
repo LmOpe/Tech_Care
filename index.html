@@ -8,7 +8,7 @@
     <!-- SEO meta tags -->
     <meta
       name="description"
-      content="A health care dashboard for displaying users health details"
+      content="A health care doctor dashboard for displaying patients health details"
     />
     <meta
       name="keywords"
@@ -63,10 +63,13 @@
             src="/assets/group_FILL0_wght300_GRAD0_opsz24.svg"
             alt="Patients"
           />
-          <p class="">Patients</p>
+          <p>Patients</p>
         </div>
         <div class="flex gap-2 cursor-pointer items-center">
-          <img src="/assets/BirthIcon.svg" alt="Schedule" />
+          <img
+            src="/assets\calendar_today_FILL0_wght300_GRAD0_opsz24.svg"
+            alt="Schedule"
+          />
           <p>Schedule</p>
         </div>
         <div class="flex gap-2 cursor-pointer items-center">
@@ -113,27 +116,29 @@
       </div>
     </header>
 
-    <main>
+    <main class="text-dark-green flex gap-[33px]">
       <div
-        class="rounded-2xl gap-10 w-[350px] flex flex-col p-5 bg-white font-manrope font-bold text-base text-dark-green h-full"
+        class="rounded-2xl gap-10 w-[350px] flex flex-col p-5 bg-white font-manrope font-bold text-base h-full"
       >
         <div class="w-full flex justify-between">
-          <p class="text-2xl font-bolder">Patients</p>
+          <p class="text-2xl font-extrabold">Patients</p>
           <img
-          class="h-[18px] w-[32px]"
+            class="h-[18px] w-[32px]"
             src="/assets/search_FILL0_wght300_GRAD0_opsz24.svg"
             alt="Search Patients"
           />
         </div>
         <ul
           id="patients-list"
-          class="flex flex-col gap-8 w-full overflow-y-scroll overflow-x-hidden pr-4 h-sidebar"
+          class="flex flex-col gap-8 w-full overflow-y-scroll overflow-x-hidden pr-1 h-main sidebar"
         ></ul>
       </div>
       <div class=""></div>
-      <div class=""></div>
+      <div
+        id="right-side-bar"
+        class="gap-8 w-[350px] flex flex-col font-manrope font-bold text-base text-dark-green h-[calc(100vh_-_160px)] sidebar overflow-y-auto"
+      ></div>
     </main>
-
     <!-- JavaScript files -->
     <script src="/index.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -164,7 +169,7 @@
               "ligt-pink-2": "#FFE6E9",
             },
             height: {
-              "sidebar": "calc(100vh - 270px)",
+              main: "calc(100vh - 270px)",
             },
           },
         },
