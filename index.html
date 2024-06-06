@@ -144,11 +144,6 @@
         <div
           class="p-5 rounded-2xl min-h-[600px] bg-white w-full flex flex-col gap-5"
         >
-          <div class="flex flex-col gap-[30px]">
-            <p class="font-extrabold text-2xl">Diagnosis History</p>
-            <!-- Chart -->
-            <div class=""></div>
-          </div>
           <!-- Health status -->
           <div class="flex w-full gap-[21px]">
             <div
@@ -163,7 +158,10 @@
                 <p class="text-base font-medium">Respiratory Rate</p>
                 <p id="respiratory-rate" class="text-[30px] font-extrabold"></p>
               </div>
-              <p class="text-base font-normal flex gap-2" id="respiratory-status"></p>
+              <p
+                class="text-base font-normal flex gap-2"
+                id="respiratory-status"
+              ></p>
             </div>
             <div
               class="w-full bg-light-pink-2 rounded-3 p-4 flex flex-col gap-5"
@@ -177,7 +175,10 @@
                 <p class="text-base font-medium">Temperature</p>
                 <p id="temperature" class="text-[30px] font-extrabold"></p>
               </div>
-              <p class="text-base font-normal flex gap-2" id="temperature-status"></p>
+              <p
+                class="text-base font-normal flex gap-2"
+                id="temperature-status"
+              ></p>
             </div>
             <div
               class="w-full bg-light-pink-1 rounded-3 p-4 flex flex-col gap-5"
@@ -196,7 +197,20 @@
           </div>
         </div>
         <!-- Diagnostic List -->
-        <div class=""></div>
+        <div class="p-5 rounded-2xl bg-white w-full flex flex-col gap-[40px]">
+          <p class="text-[24px] font-extrabold">Diagnostic List</p>
+
+          <table class="min-w-full">
+            <thead class="font-bold w-full">
+              <tr class="bg-grey-3 rounded-t-lg">
+                <th class="text-left p-3">Problem/Diagnosis</th>
+                <th class="text-left p-3">Description</th>
+                <th class="text-left p-3">Status</th>
+              </tr>
+            </thead>
+            <tbody id="diagnostic-list" class="px-4"></tbody>
+          </table>
+        </div>
       </div>
       <div
         id="right-side-bar"
@@ -205,6 +219,7 @@
     </main>
     <!-- JavaScript files -->
     <script src="/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {

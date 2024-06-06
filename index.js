@@ -19,6 +19,8 @@ addEventListener("DOMContentLoaded", () => {
   const temperatureStatus = document.getElementById("temperature-status");
   const heartRate = document.getElementById("heart-rate");
   const heartStatus = document.getElementById("heart-status");
+  const diagnosticList = document.getElementById("diagnostic-list");
+  
 
   // Fetch data from the API
   function fetchData() {
@@ -35,6 +37,8 @@ addEventListener("DOMContentLoaded", () => {
         UpdatePatientsList(data);
         UpdateRightSideBar(data[3]);
         UpdateDiagnosisHistory(data[3].diagnosis_history);
+        updateDiagnosticList(data[3]);
+        UpdateDiagnosisChart(data[3].diagnosis_history);
       })
       .catch((error) => console.error("Error:", error));
   }
@@ -191,6 +195,29 @@ addEventListener("DOMContentLoaded", () => {
           }.svg" alt="Heart Status"></img>`
         : ""
     } ${singleData.heart_rate.levels}`;
+  }
+
+  // Function to update the Diagnostic list in the UI
+  function updateDiagnosticList(data) {
+    const diagnosticListHTML = data.diagnostic_list
+      .map(
+        (item) => `
+    <tr>
+                <td class="py-5 px-4">
+                  ${item.name}
+                </td>
+                <td class="py-5 px-4">
+                  ${item.description}
+                </td>
+                <td class="py-5 px-4">
+                 ${item.status}
+                </td>
+              </tr>
+  `
+      )
+      .join("");
+
+    diagnosticList.innerHTML = diagnosticListHTML;
   }
 
   fetchData();
