@@ -20,7 +20,7 @@ addEventListener("DOMContentLoaded", () => {
   const heartRate = document.getElementById("heart-rate");
   const heartStatus = document.getElementById("heart-status");
   const diagnosticList = document.getElementById("diagnostic-list");
-  
+  const ctx = document.getElementById("myChart");
 
   // Fetch data from the API
   function fetchData() {
@@ -38,7 +38,7 @@ addEventListener("DOMContentLoaded", () => {
         UpdateRightSideBar(data[3]);
         UpdateDiagnosisHistory(data[3].diagnosis_history);
         updateDiagnosticList(data[3]);
-        UpdateDiagnosisChart(data[3].diagnosis_history);
+        UpdateDiagnosisChart(data[0].diagnosis_history);
       })
       .catch((error) => console.error("Error:", error));
   }
@@ -218,6 +218,70 @@ addEventListener("DOMContentLoaded", () => {
       .join("");
 
     diagnosticList.innerHTML = diagnosticListHTML;
+  }
+
+  // Function to update the Chart UI
+  function UpdateDiagnosisChart(data) {
+    const sortedData = data.sort((a, b) => {
+      const dateA = new Date(`${a.month} 1, ${a.year}`);
+      const dateB = new Date(`${b.month} 1, ${b.year}`);
+      return dateA - dateB;
+    });
+
+    const lastSixMonthsData = sortedData.slice(-6);
+
+    const formattedData = lastSixMonthsData.map((row) => ({
+      month: new Date(`${row.month} 1, ${row.year}`).toLocaleString("en-US", {
+        month: "short",
+      }),
+      year: row.year,
+      diastolic: row.blood_pressure.diastolic.value,
+      systolic: row.blood_pressure.systolic.value,
+    }));
+
+    new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: formattedData.map((row) => `${row.month}, ${row.year}`),
+        datasets: [
+          {
+            data: formattedData.map((row) => row.diastolic),
+            borderColor: "#7E6CAB",
+            borderWidth: 1,
+            borderJoinStyle: "round",
+            fill: false,
+            lineTension: 0.4,
+            pointRadius: 4,
+            pointBackgroundColor: "#7E6CAB",
+          },
+          {
+            data: formattedData.map((row) => row.systolic),
+            borderColor: "#E66FD2",
+            borderWidth: 1,
+            borderJoinStyle: "round",
+            fill: false,
+            lineTension: 0.4,
+            pointRadius: 4,
+            pointBackgroundColor: "#E66FD2",
+          },
+        ],
+      },
+      options: {
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
+        scales: {
+          x: {
+            type: "category",
+          },
+          y: {
+            type: "linear",
+          },
+        },
+      },
+    });
   }
 
   fetchData();

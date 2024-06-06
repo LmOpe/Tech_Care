@@ -144,6 +144,57 @@
         <div
           class="p-5 rounded-2xl min-h-[600px] bg-white w-full flex flex-col gap-5"
         >
+          <div class="flex flex-col gap-[30px]">
+            <p class="font-extrabold text-2xl">Diagnosis History</p>
+            <div
+              class="flex max-w-[726px] min-h-[298px] rounded-[12px] bg-grey-2 p-4 gap-[39px] font-manrope"
+            >
+              <div class="flex flex-col w-full gap-[28px]">
+                <div class="w-full flex justify-between">
+                  <p class="font-bold text-[18px]">Blood Pressure</p>
+                  <p class="flex gap-4 text-base font-normal">
+                    <span>Last 6 months</span>
+                    <img src="/assets/ArrowDown.svg" alt="Data Range" />
+                  </p>
+                </div>
+                <!-- Chart -->
+                <div>
+                  <canvas id="myChart"></canvas>
+                </div>
+              </div>
+              <div class="max-w-[208px] flex flex-col gap-4">
+                <div class="flex flex-col gap-2 w-max">
+                  <p class="font-bold text-base flex gap-2 items-center">
+                    <span class="bg-pink rounded-full w-[14px] h-[14px]"></span>
+                    <span>Systolic</span>
+                  </p>
+                  <p class="font-bold text-[22px]">160</p>
+                  <p class="flex gap-2">
+                    <img src="/assets/ArrowUp.svg" alt="Systolic level" />
+                    <span class="text-base font-normal"
+                      >Higher than Average</span
+                    >
+                  </p>
+                </div>
+                <div class="w-full bg-grey-6 h-[0.2px]"></div>
+                <div class="flex flex-col gap-2">
+                  <p class="font-bold text-base flex gap-2 items-center">
+                    <span
+                      class="bg-light-purple rounded-full w-[14px] h-[14px]"
+                    ></span>
+                    <span>Diastolic</span>
+                  </p>
+                  <p class="font-bold text-[22px]">78</p>
+                  <p class="flex gap-2">
+                    <img src="/assets/ArrowDown.svg" alt="Diastolic level" />
+                    <span class="text-base font-normal"
+                      >Lower than Average</span
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- Health status -->
           <div class="flex w-full gap-[21px]">
             <div
