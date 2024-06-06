@@ -13,3 +13,12 @@
   border-radius: 3px;
   height: 15px;
 }
+
+thead th:first-child {
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
+}
+thead th:last-child {
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
